@@ -1,0 +1,30 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the container take up the full viewport height */
+    width: 100%;   /* Make the container take up the full width */
+    position: fixed; /* Ensure the loader stays in place even if the page scrolls */
+    top: 0;
+    left: 0;
+    z-index: 9999; /* Ensure the loader is above other elements */
+  }
+  
+  .loader {
+    border: 0.25rem solid #f3f3f3; /* Light grey */
+    border-top:0.25rem solid green; /* Blue */
+    border-radius: 50%;
+    width: 3.25rem;
+    height: 3.25rem;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

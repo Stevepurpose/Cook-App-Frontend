@@ -4,14 +4,17 @@ import { GlobalStateContext } from './GlobalStateProvider';
 import SupportForm from './SupportForm';
 import './index.css';
 import { baseURL } from './Baseurl';
+import LoadingIndicator from './LoadingIndicator';
 
 function Recipes() {
+    const [loading, setLoading] = useState(true); // Loading state
     const { state, dispatch } = useContext(GlobalStateContext);
     const [selectedOrigin, setSelectedOrigin] = useState(null); // State to track selected origin
     
 
     useEffect(() => {
         async function fetchRecipes() {
+
             const response = await fetch(`${baseURL}/recipes/`);
             const data = await response.json();
             dispatch({
@@ -19,6 +22,7 @@ function Recipes() {
                 field: 'recipes', 
                 value: data,
             });
+            setLoading(false)
         }
         fetchRecipes();
     }, [dispatch]);
@@ -26,6 +30,9 @@ function Recipes() {
     const toggleOrigin = (origin) => {
         setSelectedOrigin((prevOrigin) => (prevOrigin === origin ? null : origin));
     };
+
+
+
 
     return (
         <div className='text-center text-amber-100 h-screen grid grid-rows-[1fr_4fr]'>
@@ -35,6 +42,7 @@ function Recipes() {
             <div className=' grid grid-cols-1 md:grid-cols-2 gap-4 p-4  bg-amber-300'>
             <div className='p-4'>
                 <h1 className='text-green-900 text-2xl font-extrabold'>Click Nationality To view Meal Recipes</h1>
+                {loading && <LoadingIndicator />}
                 <ul>
                     {state.recipes &&
                         [...new Set(state.recipes.map((recipe) => recipe.origin))]
