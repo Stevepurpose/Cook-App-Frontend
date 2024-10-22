@@ -34,25 +34,31 @@ function RecipeDetails() {
     }
 
     return (
-        <div className='text-center text-red-800 bg-amber-300 h-screen'>
-            <div className='h-1/6 '>
-            <button className='p-4'> <Link to="/">Back to Home</Link></button>
-            </div>
-            <div className='h-3/6 m-auto'>
-                <h1 className='text-3xl'>{recipe.food_name}</h1>
-                <p><span className='font-extrabold'>Origin: </span> {recipe.origin}</p>
-                <p><span className='font-extrabold'>Eaten With: </span>{recipe.eaten_with}</p>
-                <p><span className='font-extrabold'> Appetizer: </span>{recipe.as_appetizer ? 'Yes' : 'No'}</p>
-                <p><span className='font-extrabold'>Main: </span> {recipe.as_main ? 'Yes' : 'No'}</p>
-                <p><span className='font-extrabold'>Dessert: </span> {recipe.as_dessert ? 'Yes' : 'No'}</p>
-                <p><span className='font-extrabold'>Ingredients: </span>{recipe.ingredients}</p>
-                <p><span className='font-extrabold'>Directions: </span> {recipe.directions}</p>
-                <p><span className='font-extrabold'>Nutritional Benefits: </span>{recipe.nutritional_benefits}</p>
-                <p><span className='font-extrabold'>Chef: </span>{recipe.chef}</p>
-            </div>
-            <div className=' bg-[rgba(0,230,0,0.6)] bg-[url("../pics/trees.svg")] bg-blend-overlay bg-right h-2/6'>
-            </div>
+        <div className='text-start text-red-800 bg-amber-300 h-screen flex flex-col justify-between'>
+        <div className='h-1/6'>
+            <button className='p-4'><Link to="/">Back to Home</Link></button>
         </div>
+    
+        {/* Ensure text is aligned to the start and not centered */}
+        <div className='flex-grow bg-inherit max-w-lg w-full px-4 text-left'>
+            <h1 className='text-3xl'>{recipe.food_name}</h1>
+            <p><span className='font-extrabold'>Origin: </span>{recipe.origin}</p>
+            <p><span className='font-extrabold'>Eaten With: </span>{recipe.eaten_with}</p>
+            <p><span className='font-extrabold'>Appetizer: </span>{recipe.as_appetizer ? 'Yes' : 'No'}</p>
+            <p><span className='font-extrabold'>Main: </span>{recipe.as_main ? 'Yes' : 'No'}</p>
+            <p><span className='font-extrabold'>Dessert: </span>{recipe.as_dessert ? 'Yes' : 'No'}</p>
+            <p><span className='font-extrabold'>Ingredients: </span>{recipe.ingredients}</p>
+            <p><span className='font-extrabold'>Directions: </span>{recipe.directions}</p>
+            <p><span className='font-extrabold'>Nutritional Benefits: </span>{recipe.nutritional_benefits}</p>
+            <p><span className='font-extrabold'>Chef: </span>{recipe.chef}</p>
+        </div>
+    
+        {/* Ensure the green div is stuck to the bottom and takes the remaining space */}
+        <div className='bg-[rgba(0,230,0,0.6)] bg-[url("../pics/trees.svg")] bg-blend-overlay bg-right h-32 sm:h-40 md:h-48 w-full'>
+        </div>
+    </div>
+    
+
     );
 }
 
